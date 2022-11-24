@@ -110,9 +110,7 @@ class StripeOnsitePayment extends OnsitePayment
             'formID'        => 'PaymentForm_PaymentForm',
             'stripeField'   => 'PaymentForm_PaymentForm_' . $stripeField->getName(),
             'tokenField'    => 'PaymentForm_PaymentForm_' . $tokenField->getName(),
-            'key'           => isset($stripeConfig['parameters']) && isset($stripeConfig['parameters']['publishableKey'])
-                                ? $stripeConfig['parameters']['publishableKey']
-                                : '',
+            'key'           => $this->gateway->getParameter('publishableKey'),
         ];
         $this->extend('updateStripeConfig', $jsConfig);
 
